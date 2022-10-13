@@ -1,0 +1,33 @@
+<p>贈り物相性表</p>
+
+<div id="demo-container" class="container-fluid">
+  <div >
+    <span>
+      <label>Hide: </label>
+      <input type="checkbox" class="btn-check" id="btn-check-black" autocomplete="off" [(ngModel)]="isBlackHide" (change)="toggleBlackHide()">
+      <label class="btn btn-outline-primary" for="btn-check-black">{{ groupBlack }}</label>
+
+      <input type="checkbox" class="btn-check" id="btn-check-blue" autocomplete="off" [(ngModel)]="isBlueHide" (change)="toggleBlueHide()">
+      <label class="btn btn-outline-primary" for="btn-check-blue">{{ groupBlue }}</label>
+
+      <input type="checkbox" class="btn-check" id="btn-check-gold" autocomplete="off" [(ngModel)]="isGoldHide" (change)="toggleGoldHide()">
+      <label class="btn btn-outline-primary" for="btn-check-gold">{{ groupGold }}</label>
+
+      <input type="checkbox" class="btn-check" id="btn-check-association" autocomplete="off" [(ngModel)]="isChurchHide" (change)="toggleChurchHide()">
+      <label class="btn btn-outline-primary" for="btn-check-association">{{ groupChurch }}</label>
+
+      <input type="checkbox" class="btn-check" id="btn-check-dlc" autocomplete="off" [(ngModel)]="isDlcHide" (change)="toggleDlcHide()">
+      <label class="btn btn-outline-primary" for="btn-check-dlc">{{ groupDlc }}</label>
+    </span>
+    <hr />
+  </div>
+
+  <div>
+    <angular-slickgrid gridId="grid11"
+                       [columnDefinitions]="columnDefinitions"
+                       [gridOptions]="gridOptions"
+                       [dataset]="dataset"
+                       (onAngularGridCreated)="angularGridReady($any($event).detail)">
+    </angular-slickgrid>
+  </div>
+</div>
