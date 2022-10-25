@@ -11,6 +11,8 @@ import {
 } from 'angular-slickgrid';
 import { GiftMapService } from '../services/giftmap.service';
 import { Unit } from '../transaction/unit';
+import * as types from '../types';
+export declare type HideInfo = { group: types.GroupType; value: boolean };
 
 @Component({
   selector: 'app-gift',
@@ -27,6 +29,11 @@ export class GiftComponent implements OnInit {
   dataset: any[] = [];
   updatedObject: any;
 
+  blackHideInfo: HideInfo = { group: '黒鷲', value: false };
+  blueHideInfo: HideInfo = { group: '青獅子', value: false };
+  goldHideInfo: HideInfo = { group: '金鹿', value: false };
+  churchHideInfo: HideInfo = { group: '教会', value: false };
+  dlcHideInfo: HideInfo = { group: 'DLC', value: false };
   isBlackHide: boolean = false;
   isBlueHide: boolean = false;
   isGoldHide: boolean = false;
@@ -74,8 +81,12 @@ export class GiftComponent implements OnInit {
     });
 
     // 非表示定義されているアイテムをデフォルト非表示にする。
-    const filteredColumnDefinitions = this.columnDefinitions.filter((col) => !(this.giftmapService.items.some( i => i.id == col.id && i.hide )));
-    const mappedColumnDefinitions = filteredColumnDefinitions.map( (col) => { return { columnId: col.id.toString() }});
+    const filteredColumnDefinitions = this.columnDefinitions.filter(
+      (col) => !this.giftmapService.items.some((i) => i.id == col.id && i.hide)
+    );
+    const mappedColumnDefinitions = filteredColumnDefinitions.map((col) => {
+      return { columnId: col.id.toString() };
+    });
 
     this.gridOptions = {
       enableAutoResize: true,
@@ -92,7 +103,7 @@ export class GiftComponent implements OnInit {
 
       presets: {
         sorters: [{ columnId: 'id', direction: 'ASC' }],
-        columns: mappedColumnDefinitions
+        columns: mappedColumnDefinitions,
       },
     };
 
