@@ -12,7 +12,7 @@ import {
 import { GiftMapService } from '../services/giftmap.service';
 import { Unit } from '../transaction/unit';
 import * as types from '../types';
-export declare type HideInfo = { group: types.GroupType; value: boolean };
+export declare type GroupInfo = { name: types.GroupType; hide: boolean };
 
 @Component({
   selector: 'app-gift',
@@ -29,11 +29,11 @@ export class GiftComponent implements OnInit {
   dataset: any[] = [];
   updatedObject: any;
 
-  blackHideInfo: HideInfo = { group: '黒鷲', value: false };
-  blueHideInfo: HideInfo = { group: '青獅子', value: false };
-  goldHideInfo: HideInfo = { group: '金鹿', value: false };
-  churchHideInfo: HideInfo = { group: '教会', value: false };
-  dlcHideInfo: HideInfo = { group: 'DLC', value: false };
+  blackGroupInfo: GroupInfo = { name: '黒鷲', hide: false };
+  blueGroupInfo: GroupInfo = { name: '青獅子', hide: false };
+  goldGroupInfo: GroupInfo = { name: '金鹿', hide: false };
+  churchGroupInfo: GroupInfo = { name: '教会', hide: false };
+  dlcGroupInfo: GroupInfo = { name: 'DLC', hide: false };
   isBlackHide: boolean = false;
   isBlueHide: boolean = false;
   isGoldHide: boolean = false;
