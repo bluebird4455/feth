@@ -19,7 +19,7 @@ export class GiftMapService {
 
       const list = doc.Gift
       this.items = Object.keys(list).map((elm) => {
-        return { id: elm, name: list[elm].Name, like: list[elm].Likes, dislike: list[elm].Dislikes };
+        return { id: elm, name: list[elm].Name, like: list[elm].Likes, dislike: list[elm].Dislikes, hide: list[elm].Hide ?? false };
       });
 
     } catch (e) {
@@ -35,7 +35,7 @@ export class GiftMapService {
     const obj = {};
     this.items.forEach(elm => {
       if (elm.like.some(value => value == id)) {
-        var a = Object.assign(obj, {[elm.id]:"○"});
+        Object.assign(obj, {[elm.id]:"○"});
       }
       if (elm.dislike.some(value => value == id)){
         Object.assign(obj, {[elm.id]:"×"});
@@ -405,6 +405,7 @@ Gift:
       - 106
       - 506
     Dislikes: []
+    Hide: true
   IM90002:
     Name: 向日葵
     Likes:
@@ -412,26 +413,31 @@ Gift:
       - 406
       - 408
     Dislikes: []
+    Hide: true
   IM90003:
     Name: スミレ
     Likes:
       - 204
     Dislikes: []
+    Hide: true
   IM90004:
     Name: ラベンダー
     Likes:
       - 206
     Dislikes: []
+    Hide: true
   IM90005:
     Name: 水仙
     Likes: []
     Dislikes: []
+    Hide: true
   IM90006:
     Name: 薔薇
     Likes:
       - 302
       - 501
     Dislikes: []
+    Hide: true
   IM90007:
     Name: 勿忘草
     Likes:
@@ -439,32 +445,38 @@ Gift:
       - 402
       - 502
     Dislikes: []
+    Hide: true
   IM90008:
     Name: 百合
     Likes:
       - 305
     Dislikes: []
+    Hide: true
   IM90009:
     Name: 鈴蘭
     Likes:
       - 306
       - 505
     Dislikes: []
+    Hide: true
   IM90010:
     Name: カスミソウ
     Likes:
       - 409
     Dislikes: []
+    Hide: true
   IM90011:
     Name: アネモネ
     Likes:
       - 307
     Dislikes: []
+    Hide: true
   IM90012:
     Name: カーネーション
     Likes:
       - 101
     Dislikes: []
+    Hide: true
   `;
   }
 }

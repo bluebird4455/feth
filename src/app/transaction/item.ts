@@ -3,4 +3,5 @@ export interface Item {
   name: string;
   like: string[];
   dislike: string[];
+  hide: boolean;
 }
