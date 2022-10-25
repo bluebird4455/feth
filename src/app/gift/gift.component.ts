@@ -34,17 +34,6 @@ export class GiftComponent implements OnInit {
   goldGroupInfo: GroupInfo = { name: '金鹿', hide: false };
   churchGroupInfo: GroupInfo = { name: '教会', hide: false };
   dlcGroupInfo: GroupInfo = { name: 'DLC', hide: false };
-  isBlackHide: boolean = false;
-  isBlueHide: boolean = false;
-  isGoldHide: boolean = false;
-  isChurchHide: boolean = false;
-  isDlcHide: boolean = false;
-
-  readonly groupBlack = '黒鷲';
-  readonly groupBlue = '青獅子';
-  readonly groupGold = '金鹿';
-  readonly groupChurch = '教会';
-  readonly groupDlc = 'DLC';
 
   @Input() units?: Unit[];
   constructor(private giftmapService: GiftMapService) {}
@@ -119,27 +108,27 @@ export class GiftComponent implements OnInit {
   }
 
   toggleBlackHide() {
-    this.toggleGroupHide(this.isBlackHide, this.groupBlack);
+    this.toggleGroupHide(this.blackGroupInfo);
   }
 
   toggleBlueHide() {
-    this.toggleGroupHide(this.isBlueHide, this.groupBlue);
+    this.toggleGroupHide(this.blueGroupInfo);
   }
 
   toggleGoldHide() {
-    this.toggleGroupHide(this.isGoldHide, this.groupGold);
+    this.toggleGroupHide(this.goldGroupInfo);
   }
 
   toggleChurchHide() {
-    this.toggleGroupHide(this.isChurchHide, this.groupChurch);
+    this.toggleGroupHide(this.churchGroupInfo);
   }
 
   toggleDlcHide() {
-    this.toggleGroupHide(this.isDlcHide, this.groupDlc);
+    this.toggleGroupHide(this.dlcGroupInfo);
   }
 
-  toggleGroupHide(isHide: boolean, group: string) {
-    isHide ? this.hideGroup(group) : this.showGroup(group);
+  toggleGroupHide(groupInfo: GroupInfo) {
+    groupInfo.hide ? this.hideGroup(groupInfo.name) : this.showGroup(groupInfo.name);
   }
 
   showGroup(group: string) {
