@@ -142,7 +142,7 @@ export class GiftComponent implements OnInit {
   hideGroup(group: string) {
     const currentData = this.dataView.getItems();
     const deletelist = currentData
-      // ? グループメンバーを手動削除し、ボタンによるHide処理を実施した場合にエラーとなるか
+      // * グループメンバーを手動削除し、ボタンによるHide処理を実施した場合でもエラーとはならない
       .filter((v) => v.group == group)
       .map((e) => e.id);
     this.angularGrid.gridService.deleteItemByIds(deletelist as string[]);
